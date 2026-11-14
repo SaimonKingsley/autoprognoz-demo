@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Учебный прототип интерфейса АвтоПрогноз РФ. Синтетические данные, не рыночная оценка.">
+  <title>АвтоПрогноз — исследуйте стоимость автомобиля</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.mjs"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Перейти к содержимому</a>
+  <div class="demo-ribbon"><span class="dot"></span> Учебный прототип · все цены и графики вымышлены · не использовать для покупки или продажи</div>
+  <header><a class="brand" href="./" aria-label="АвтоПрогноз — главная"><span class="logo">а↗</span> АвтоПрогноз<span class="country">РФ</span></a><nav aria-label="Навигация"><a class="active" href="#main">Обзор стоимости</a><a href="#methodology">Как это работает</a></nav><span class="preview-tag">Демо интерфейса</span></header>
+  <main id="main">
+    <div class="intro"><div><p class="eyebrow">АВТОМОБИЛЬНЫЙ РЫНОК / АНАЛИТИКА</p><h1>Цена сегодня.<br><span>Контекст на завтра.</span></h1><p class="lead">История, сопоставимые автомобили и возможная динамика — в одном месте.</p></div><div class="intro-note"><span class="small-icon">↗</span><p>Сначала данные.<br><strong>Потом выводы.</strong></p></div></div>
+    <div class="workspace">
+      <aside class="vehicle-card"><div class="panel-title"><h2>Ваш автомобиль</h2><span>01</span></div><p class="muted">Выберите параметры учебного примера.</p>
+        <form id="vehicle-form">
+          <label for="make">Марка</label><select id="make" name="make" required></select>
+          <label for="model">Модель</label><select id="model" name="model" required></select>
+          <label for="generation">Поколение</label><select id="generation" required></select>
+          <div class="form-row"><div><label for="year">Год</label><select id="year" required></select></div><div><label for="mileage">Пробег, км</label><input id="mileage" type="number" min="0" max="2000000" step="1" value="100000" required></div></div>
+          <label for="engine">Двигатель</label><select id="engine" required></select>
+          <div class="form-row"><div><label for="gearbox">Коробка</label><select id="gearbox" required></select></div><div><label for="drive">Привод</label><select id="drive" required></select></div></div>
+          <label for="region">Регион</label><select id="region"><option value="moscow">Москва и МО</option><option value="spb">Санкт-Петербург и ЛО</option></select>
+          <button id="submit" class="primary" type="submit">Показать обзор <span>↗</span></button>
+        </form>
+        <p class="form-foot">Оценка относится к группе аналогов.<br>Она не учитывает состояние конкретной машины.</p>
+      </aside>
+      <section id="result" class="result" aria-busy="true" aria-label="Результаты анализа"><div class="placeholder" role="status">Загружаем учебный пример…</div></section>
+    </div>
+    <section id="methodology" class="methodology"><div><p class="eyebrow">ПОНЯТНАЯ МЕТОДИКА</p><h2>Что стоит за графиком</h2><p>В рабочей версии цифры будут появляться только после проверки источников и качества модели.</p></div><div class="steps"><article><span>01 / ДАННЫЕ</span><h3>Сопоставимые машины</h3><p>Сравниваем поколение, год, пробег и регион. Цена объявления не равна сумме сделки.</p></article><article><span>02 / ПРОВЕРКА</span><h3>Проверка на прошлом</h3><p>Модель должна показать результат на периодах, которых не было при обучении.</p></article><article><span>03 / НЕОПРЕДЕЛЁННОСТЬ</span><h3>Диапазон вместо обещания</h3><p>Если данных недостаточно или направление неясно, так и сообщаем.</p></article></div></section>
+  </main><footer><span class="brand-footer">АвтоПрогноз РФ</span><span>Учебная сборка · реальные источники ещё не подключены</span><a href="#main">К обзору ↑</a></footer>
+  <div id="announcer" class="sr-only" aria-live="polite"></div>
+</body></html>
