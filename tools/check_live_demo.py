@@ -26,9 +26,13 @@ def fetch(url, token=None):
             time.sleep(2)
 
 
-def check(root, fetcher=fetch, token=None):
+def check(root, fetcher=fetch, token=None, sleeper=time.sleep):
     expected = json.loads((Path(root) / 'release.json').read_text(encoding='utf-8'))
-    pages = json.loads(fetcher('https://api.github.com/repos/SaimonKingsley/autoprognoz-demo/pages', token))
+    for attempt in range(7):
+        pages = json.loads(fetcher('https://api.github.com/repos/SaimonKingsley/autoprognoz-demo/pages', token))
+        if pages.get('status') != 'building' or attempt == 6:
+            break
+        sleeper(10)
     if pages.get('status') != 'built' or pages.get('https_enforced') is not True:
         raise ValueError('Pages must be built with HTTPS enforced')
     deployed = json.loads(fetcher(BASE + 'release.json'))
