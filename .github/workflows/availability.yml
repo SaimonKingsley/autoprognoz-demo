@@ -1,0 +1,23 @@
+name: Published demo availability
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '23 7 * * *'
+permissions:
+  contents: read
+  pages: read
+concurrency:
+  group: demo-availability
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Check local release integrity
+        run: python3 tools/check_demo.py
+      - name: Check live Pages configuration and assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 tools/check_live_demo.py
