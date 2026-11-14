@@ -1,0 +1,24 @@
+name: Synthetic demo integrity
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: demo-integrity-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Verify synthetic release bytes and manifest
+        run: python3 tools/check_demo.py
+      - name: Check JavaScript syntax
+        run: |
+          node --check app.mjs
+          node --check domain.mjs
+          node --check snapshot.mjs
