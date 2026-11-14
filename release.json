@@ -1,6 +1,6 @@
 {
-  "release_id": "demo-af3b3c3529f2",
-  "source_commit": "af3b3c3529f2a372d94770db9001f8a53b328114",
+  "release_id": "demo-5f79365e9814",
+  "source_commit": "5f79365e9814c8b8ad0c27e800b1c346e7933b97",
   "synthetic_only": true,
   "commercial_use": false,
   "data_as_of": "2026-11-01",
@@ -10,12 +10,12 @@
       "bytes": 5121
     },
     "styles.css": {
-      "sha256": "ff649b4e5cdced4cf525ccecb06f58154462e030d3f6f83b76d7ebe841823db3",
-      "bytes": 10489
+      "sha256": "62edb0dbff21d896b7e32aa62ab35b0b963c2019f5cc258941374663d18aa20c",
+      "bytes": 10963
     },
     "app.mjs": {
-      "sha256": "a042918a6f2004ffa4c80d8787cd51fdef7069f17e6e358b3a684d62139613fe",
-      "bytes": 12289
+      "sha256": "708e25d95d6bb794d94773a9c505366e199870a50a880f837f5f8cba5c1fd808",
+      "bytes": 13740
     },
     "domain.mjs": {
       "sha256": "8e82f3ee884749d08c1808ca18f38edd35e66d05dfd516e16a6d3a103e97cbac",
