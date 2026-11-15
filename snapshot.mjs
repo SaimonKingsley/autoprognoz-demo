@@ -65,14 +65,31 @@ export function adaptModel(manifest, model, shard) {
   if([...new Set(shard.results.map(r=>r.mode))].sort().join() !== [...model.supported_modes].sort().join())fail('Supported modes mismatch');
   return validateSnapshot({schema_version:'0.1-draft',is_fixture:true,run_id:manifest.run_id,vehicles});
 }
-export async function loadBundle(base, { fetcher=globalThis.fetch, subtle=globalThis.crypto?.subtle } = {}) {
+export async function loadBundle(base, { fetcher=globalThis.fetch, subtle=globalThis.crypto?.subtle, bootstrap=null } = {}) {
   const root=new URL(base);
   if(!subtle)fail('SHA-256 unavailable');
+  let embedded=null;
+  if(bootstrap){
+    if(typeof bootstrap!=='string'||bootstrap.length>23000)fail('Invalid fixture bootstrap size');
+    embedded=JSON.parse(bootstrap);
+    if(embedded?.format!=='fixture-bootstrap-1'||embedded.run_id!=='fixture-v001'||!embedded.files||Array.isArray(embedded.files)||Object.keys(embedded.files).length!==3||!Object.hasOwn(embedded.files,'manifest.json'))fail('Invalid fixture bootstrap');
+    let total=0;
+    for(const [path,encoded] of Object.entries(embedded.files)){
+      if(path!=='manifest.json')safePath(path,embedded.run_id);
+      if(typeof encoded!=='string'||!/^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/.test(encoded))fail('Invalid bootstrap encoding');
+      total+=atob(encoded).length;
+    }
+    if(total>16384)fail('Invalid fixture bootstrap size');
+  }
   const read=async(path,entry)=>{
     const u=new URL(path,root);if(u.origin!==root.origin || !u.pathname.startsWith(root.pathname))fail('Snapshot escaped root');
-    const response=await fetcher(u,{signal:AbortSignal.timeout(8000),cache:'no-cache'});
-    if(!response.ok)fail('Snapshot HTTP error');
-    const raw=new Uint8Array(await response.arrayBuffer());
+    let raw;
+    if(embedded&&Object.hasOwn(embedded.files,path))raw=Uint8Array.from(atob(embedded.files[path]),c=>c.charCodeAt(0));
+    else{
+      const response=await fetcher(u,{signal:AbortSignal.timeout(8000),cache:'no-cache'});
+      if(!response.ok)fail('Snapshot HTTP error');
+      raw=new Uint8Array(await response.arrayBuffer());
+    }
     if(raw.length>2_000_000)fail('Snapshot too large');
     if(entry){
       const digest=[...new Uint8Array(await subtle.digest('SHA-256',raw))].map(b=>b.toString(16).padStart(2,'0')).join('');
@@ -81,6 +98,7 @@ export async function loadBundle(base, { fetcher=globalThis.fetch, subtle=global
     return JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(raw));
   };
   const m=await read('manifest.json');
+  if(embedded&&embedded.run_id!==m.run_id)fail('Mixed bootstrap run');
   if(m.schema_version!==VERSION || !/^[a-z0-9][a-z0-9_-]{0,79}$/.test(m.run_id) || m.is_fixture!==true || m.status!=='fixture' || m.currency!=='RUB' || m.price_kind!=='asking')fail('Only synthetic 0.1.0 accepted');
   if(!Number.isFinite(Date.parse(m.generated_at)) || (m.data_as_of!==null&&(!dateOK(m.data_as_of)||new Date(m.generated_at).toISOString().slice(0,10)<m.data_as_of)))fail('Invalid manifest dates');
   if(!Array.isArray(m.sources) || !m.sources.length || m.sources.some(s=>!s.id || typeof s.label!=='string' || s.rights_status!=='synthetic') || new Set(m.sources.map(s=>s.id)).size!==m.sources.length)fail('Invalid source registry');
@@ -88,7 +106,9 @@ export async function loadBundle(base, { fetcher=globalThis.fetch, subtle=global
   const entries=new Map();
   for(const f of m.files){safePath(f.path,m.run_id);if(entries.has(f.path)||!['catalog','shard'].includes(f.kind)||!Number.isInteger(f.bytes)||f.bytes<1||f.bytes>2_000_000||!/^[0-9a-f]{64}$/.test(f.sha256)||!Number.isInteger(f.gzip_bytes)||f.gzip_bytes<1||f.gzip_bytes>(f.kind==='catalog'?100000:200000))fail('Invalid manifest file');entries.set(f.path,f);}
   if(entries.get('catalog.json')?.kind!=='catalog' || [...entries.values()].filter(e=>e.kind==='catalog').length!==1)fail('Missing catalog');
+  if(embedded&&Object.keys(embedded.files).some(path=>path!=='manifest.json'&&!entries.has(path)))fail('Unexpected bootstrap file');
   const catalog=await read('catalog.json',entries.get('catalog.json'));identity(catalog,m);
+  if(embedded&&catalog.models?.length!==1)fail('Bootstrap only supports one synthetic model');
   if(!Array.isArray(catalog.models)||!catalog.models.length)fail('Empty catalog');
   const seen=new Set(), referenced=new Set();
   for(const model of catalog.models){

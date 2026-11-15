@@ -25,7 +25,7 @@ function syncSelection(changed='make') {
 function announce(text) { $('announcer').textContent = text; }
 function empty(title, text, retry=false) {
   $('result').innerHTML = `<div class="empty" role="status"><span class="empty-icon" aria-hidden="true">${retry?'↻':'—'}</span><h2>${escape(title)}</h2><p>${escape(text)}</p>${retry?'<button id="retry" class="secondary" type="button">Повторить загрузку</button>':''}</div>`;
-  $('retry')?.addEventListener('click',load);
+  $('retry')?.addEventListener('click',()=>load({network:true}));
 }
 function chart(v, result) {
   const past = v.history.map(p=>({date:new Date(`${p.date}T00:00:00Z`), price:p.price}));
@@ -83,14 +83,14 @@ async function render() {
   document.querySelectorAll('[data-horizon]').forEach(b=>b.addEventListener('click',async()=>{horizon=Number(b.dataset.horizon);await render();document.querySelector(`[data-horizon="${horizon}"]`)?.focus();}));
   announce(`Учебный обзор ${title}. ${label[result.mode]}. Все цены вымышлены.`);
 }
-async function load() {
+async function load({network=false}={}) {
   const id=++requestId;
   ++renderId;
   $('result').setAttribute('aria-busy','true'); $('submit').disabled=true;
   $('result').innerHTML='<div class="placeholder" role="status">Загружаем учебный пример…</div>';
   try {
     if(params.get('case')==='error'&&!simulatedFailure){simulatedFailure=true;throw new Error('Учебный отказ загрузки');}
-    const nextBundle=await loadBundle(new URL('./data/fixture-v001/',location.href));
+    const nextBundle=await loadBundle(new URL('./data/fixture-v001/',location.href),{bootstrap:network?null:$('fixture-bootstrap')?.textContent.trim()||null});
     if(id!==requestId)return;
     bundle=nextBundle;syncSelection();
     const target={forecast:'2020',estimate:'2019',scenario:'2021',insufficient:'2022'}[params.get('case')];

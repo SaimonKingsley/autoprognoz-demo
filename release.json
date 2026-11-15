@@ -1,29 +1,29 @@
 {
-  "release_id": "demo-3c884f1240f8",
-  "source_commit": "3c884f1240f85a1770f9af70781ffdc18bc80431",
+  "release_id": "demo-f15dd357e2e5",
+  "source_commit": "f15dd357e2e5dc68825134d3a1503de6c860dd4f",
   "synthetic_only": true,
   "commercial_use": false,
   "data_as_of": "2026-11-01",
   "files": {
     "index.html": {
-      "sha256": "27163bb6e50cc1d791336cef7f8b198e9258224ad52d70fe97f7ebe070f09eb8",
-      "bytes": 5187
+      "sha256": "e32e53752daf74d687bb2489d35c47943b286420ca857567a207719111886684",
+      "bytes": 15454
     },
     "styles.css": {
       "sha256": "5aa501ae7e75ebe39491c5a2eca1f9a750b9be0dad0186416409acde69382b16",
       "bytes": 11224
     },
     "app.mjs": {
-      "sha256": "56179235cd6c589be6cb0d6daabfe2e7aaac52088369edb61b391c04ca4e5188",
-      "bytes": 13837
+      "sha256": "ac1aeff3a91eb7fb06d93442fcb6872036204b9018e778fbe3edde24be154e81",
+      "bytes": 13949
     },
     "domain.mjs": {
       "sha256": "8e82f3ee884749d08c1808ca18f38edd35e66d05dfd516e16a6d3a103e97cbac",
       "bytes": 5951
     },
     "snapshot.mjs": {
-      "sha256": "47def1b1deb237bc6e010060c1dc94d79a3a5b8e3a9e564bb4a4ff645d3f2e1f",
-      "bytes": 9449
+      "sha256": "8af506c54ba1fb067e9991211303b652577cc816cc113dcb20c76c1e4ef19a28",
+      "bytes": 10743
     },
     "data/fixture-v001/manifest.json": {
       "sha256": "bf605d158525c8b0bcedc8b65425578b3419b26e51d452a4b1d43e177003c7a3",

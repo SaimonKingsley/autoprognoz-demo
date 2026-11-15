@@ -2,7 +2,51 @@
 import hashlib
 import json
 import re
+import base64
+from html.parser import HTMLParser
 from pathlib import Path, PurePosixPath
+
+
+def check_embedded(root, manifest):
+    class Parser(HTMLParser):
+        def __init__(self):
+            super().__init__()
+            self.payloads = []
+            self.active = False
+        def handle_starttag(self, tag, attrs):
+            attributes = dict(attrs)
+            if tag == 'script' and attributes.get('id') == 'fixture-bootstrap':
+                assert attributes.get('type') == 'application/json', 'Bootstrap must be inert JSON'
+                self.payloads.append('')
+                self.active = True
+        def handle_data(self, data):
+            if self.active:
+                self.payloads[-1] += data
+        def handle_endtag(self, tag):
+            if tag == 'script':
+                self.active = False
+    def unique(pairs):
+        result = {}
+        for key, value in pairs:
+            assert key not in result, 'Duplicate bootstrap key'
+            result[key] = value
+        return result
+    parser = Parser()
+    parser.feed((root / 'index.html').read_text(encoding='utf-8'))
+    if not parser.payloads:
+        return  # Older verified releases use the network loader.
+    assert len(parser.payloads) == 1, 'Duplicate fixture bootstrap'
+    body = json.loads(parser.payloads[0], object_pairs_hook=unique)
+    assert set(body) == {'format', 'run_id', 'files'} and body['format'] == 'fixture-bootstrap-1'
+    assert body['run_id'] == manifest['run_id'] == 'fixture-v001'
+    names = {'manifest.json', *[entry['path'] for entry in manifest['files']]}
+    assert set(body['files']) == names and len(names) == 3, 'Unexpected bootstrap files'
+    total = 0
+    for name, value in body['files'].items():
+        raw = base64.b64decode(value, validate=True)
+        assert raw == (root / 'data/fixture-v001' / name).read_bytes(), 'Bootstrap differs from published fixture'
+        total += len(raw)
+    assert total <= 16384, 'Bootstrap size limit exceeded'
 
 
 def check(root):
@@ -33,6 +77,7 @@ def check(root):
         raw = (base / name).read_bytes()
         assert len(raw) == entry['bytes']
         assert hashlib.sha256(raw).hexdigest() == entry['sha256']
+    check_embedded(root, manifest)
     print(f"PASS: {release['release_id']}, {len(files)} assets; synthetic fixture and SHA-256 verified")
 
 
