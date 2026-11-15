@@ -5,12 +5,14 @@
   <meta name="description" content="Учебный прототип интерфейса АвтоПрогноз РФ. Синтетические данные, не рыночная оценка.">
   <title>АвтоПрогноз — исследуйте стоимость автомобиля</title>
   <link rel="stylesheet" href="./styles.css">
+  <link rel="modulepreload" href="./domain.mjs">
+  <link rel="modulepreload" href="./snapshot.mjs">
   <script type="module" src="./app.mjs"></script>
 </head>
 <body>
   <a class="skip" href="#main">Перейти к содержимому</a>
   <div class="demo-ribbon"><span class="dot"></span> Учебный прототип · все цены и графики вымышлены · не использовать для покупки или продажи</div>
-  <header><a class="brand" href="./" aria-label="АвтоПрогноз — главная"><span class="logo">а↗</span> АвтоПрогноз<span class="country">РФ</span></a><nav aria-label="Навигация"><a class="active" href="#main">Обзор стоимости</a><a href="#methodology">Как это работает</a></nav><span class="preview-tag">Демо интерфейса</span></header>
+  <header><a class="brand" href="./"><span class="logo" aria-hidden="true">а↗</span> АвтоПрогноз <span class="country">РФ</span></a><nav aria-label="Навигация"><a class="active" href="#main">Обзор стоимости</a><a href="#methodology">Как это работает</a></nav><span class="preview-tag">Демо интерфейса</span></header>
   <main id="main">
     <div class="intro"><div><p class="eyebrow">АВТОМОБИЛЬНЫЙ РЫНОК / АНАЛИТИКА</p><h1>Цена сегодня.<br><span>Контекст на завтра.</span></h1><p class="lead">История, сопоставимые автомобили и возможная динамика — в одном месте.</p></div><div class="intro-note"><span class="small-icon">↗</span><p>Сначала данные.<br><strong>Потом выводы.</strong></p></div></div>
     <div class="workspace">

@@ -10,3 +10,7 @@
 .values th, .values td { padding: 10px; text-align: left; border-bottom: 1px solid #dce5e8; }
 .values :focus-visible { outline: 3px solid #186c87; outline-offset: 3px; }
 @media(max-width:1000px){.chart-wrap .chart-tick{font-size:20px}}
+:root{--muted:#586872;--orange:#c75b30}
+.panel-title>span,.steps article>span{color:var(--muted)}
+.chart-wrap text{fill:var(--muted)}
+.chart-wrap polyline[stroke-dasharray]{stroke:var(--orange)}

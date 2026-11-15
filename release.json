@@ -1,17 +1,17 @@
 {
-  "release_id": "demo-4232693fa466",
-  "source_commit": "4232693fa466820b1ad7e66116cd0609eadd0907",
+  "release_id": "demo-3c884f1240f8",
+  "source_commit": "3c884f1240f85a1770f9af70781ffdc18bc80431",
   "synthetic_only": true,
   "commercial_use": false,
   "data_as_of": "2026-11-01",
   "files": {
     "index.html": {
-      "sha256": "4ffb30df00e758033e8065bc9b4c26fc35ae893cb69d4778b70cd2a066115af0",
-      "bytes": 5122
+      "sha256": "27163bb6e50cc1d791336cef7f8b198e9258224ad52d70fe97f7ebe070f09eb8",
+      "bytes": 5187
     },
     "styles.css": {
-      "sha256": "a3834cfbc337f2074f27bcce3e8c422a1cb92c380a992619e748f5263904fef4",
-      "bytes": 11029
+      "sha256": "5aa501ae7e75ebe39491c5a2eca1f9a750b9be0dad0186416409acde69382b16",
+      "bytes": 11224
     },
     "app.mjs": {
       "sha256": "56179235cd6c589be6cb0d6daabfe2e7aaac52088369edb61b391c04ca4e5188",
