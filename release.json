@@ -1,21 +1,21 @@
 {
-  "release_id": "demo-5f79365e9814",
-  "source_commit": "5f79365e9814c8b8ad0c27e800b1c346e7933b97",
+  "release_id": "demo-4232693fa466",
+  "source_commit": "4232693fa466820b1ad7e66116cd0609eadd0907",
   "synthetic_only": true,
   "commercial_use": false,
   "data_as_of": "2026-11-01",
   "files": {
     "index.html": {
-      "sha256": "0e0954e9560692b93e199ed4a8986a5e56ac0eab3e8fd8d5d3db6b54fa8b9cd6",
-      "bytes": 5121
+      "sha256": "4ffb30df00e758033e8065bc9b4c26fc35ae893cb69d4778b70cd2a066115af0",
+      "bytes": 5122
     },
     "styles.css": {
-      "sha256": "62edb0dbff21d896b7e32aa62ab35b0b963c2019f5cc258941374663d18aa20c",
-      "bytes": 10963
+      "sha256": "a3834cfbc337f2074f27bcce3e8c422a1cb92c380a992619e748f5263904fef4",
+      "bytes": 11029
     },
     "app.mjs": {
-      "sha256": "708e25d95d6bb794d94773a9c505366e199870a50a880f837f5f8cba5c1fd808",
-      "bytes": 13740
+      "sha256": "56179235cd6c589be6cb0d6daabfe2e7aaac52088369edb61b391c04ca4e5188",
+      "bytes": 13837
     },
     "domain.mjs": {
       "sha256": "8e82f3ee884749d08c1808ca18f38edd35e66d05dfd516e16a6d3a103e97cbac",
