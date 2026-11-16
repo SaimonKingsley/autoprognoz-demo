@@ -1,0 +1,46 @@
+{
+  "release_id": "demo-f15dd357e2e5",
+  "source_commit": "f15dd357e2e5dc68825134d3a1503de6c860dd4f",
+  "synthetic_only": true,
+  "commercial_use": false,
+  "data_as_of": "2026-11-01",
+  "files": {
+    "index.html": {
+      "sha256": "e32e53752daf74d687bb2489d35c47943b286420ca857567a207719111886684",
+      "bytes": 15454
+    },
+    "styles.css": {
+      "sha256": "5aa501ae7e75ebe39491c5a2eca1f9a750b9be0dad0186416409acde69382b16",
+      "bytes": 11224
+    },
+    "app.mjs": {
+      "sha256": "ac1aeff3a91eb7fb06d93442fcb6872036204b9018e778fbe3edde24be154e81",
+      "bytes": 13949
+    },
+    "domain.mjs": {
+      "sha256": "8e82f3ee884749d08c1808ca18f38edd35e66d05dfd516e16a6d3a103e97cbac",
+      "bytes": 5951
+    },
+    "snapshot.mjs": {
+      "sha256": "8af506c54ba1fb067e9991211303b652577cc816cc113dcb20c76c1e4ef19a28",
+      "bytes": 10743
+    },
+    "data/fixture-v001/manifest.json": {
+      "sha256": "bf605d158525c8b0bcedc8b65425578b3419b26e51d452a4b1d43e177003c7a3",
+      "bytes": 920
+    },
+    "data/fixture-v001/catalog.json": {
+      "sha256": "de1456122213797e60d4a0de37c17bd1ed38f34785542671a142e027db1b9596",
+      "bytes": 2608
+    },
+    "data/fixture-v001/data/fixture-v001/demo/model.json": {
+      "sha256": "5cff6ac86f8e1678ea4e03065a12add28d6d2994a59fe049bc1ce119d2142436",
+      "bytes": 3964
+    }
+  },
+  "limitations": [
+    "No real prices or market predictions",
+    "Visual/mobile review pending",
+    "No uptime guarantee"
+  ]
+}

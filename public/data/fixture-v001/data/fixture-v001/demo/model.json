@@ -1,0 +1,174 @@
+{
+  "schema_version": "0.1.0",
+  "run_id": "fixture-v001",
+  "is_fixture": true,
+  "make": "DEMO",
+  "model": "Учебная модель — не рыночные данные",
+  "results": [
+    {
+      "group_id": "demo-history",
+      "mode": "history",
+      "source_ids": [
+        "synthetic"
+      ],
+      "data_as_of": "2026-11-01",
+      "n_unique": 60,
+      "quality_flags": [
+        "synthetic"
+      ],
+      "history": [
+        {
+          "date": "2026-10-01",
+          "price_rub": 1000000,
+          "n_unique": 60
+        },
+        {
+          "date": "2026-11-01",
+          "price_rub": 1010000,
+          "n_unique": 60
+        }
+      ],
+      "estimate": null,
+      "forecast": [],
+      "scenario": null,
+      "refusal_reason": null
+    },
+    {
+      "group_id": "demo-estimate",
+      "mode": "estimate",
+      "source_ids": [
+        "synthetic"
+      ],
+      "data_as_of": "2026-11-01",
+      "n_unique": 60,
+      "quality_flags": [
+        "synthetic"
+      ],
+      "history": [
+        {
+          "date": "2026-10-01",
+          "price_rub": 1000000,
+          "n_unique": 60
+        },
+        {
+          "date": "2026-11-01",
+          "price_rub": 1010000,
+          "n_unique": 60
+        }
+      ],
+      "estimate": {
+        "price_rub": 1010000,
+        "interval": {
+          "lower_rub": 900000,
+          "upper_rub": 1120000,
+          "nominal_coverage": 0.8
+        }
+      },
+      "forecast": [],
+      "scenario": null,
+      "refusal_reason": null
+    },
+    {
+      "group_id": "demo-forecast",
+      "mode": "forecast",
+      "source_ids": [
+        "synthetic"
+      ],
+      "data_as_of": "2026-11-01",
+      "n_unique": 60,
+      "quality_flags": [
+        "synthetic"
+      ],
+      "history": [
+        {
+          "date": "2026-10-01",
+          "price_rub": 1000000,
+          "n_unique": 60
+        },
+        {
+          "date": "2026-11-01",
+          "price_rub": 1010000,
+          "n_unique": 60
+        }
+      ],
+      "estimate": null,
+      "forecast": [
+        {
+          "horizon_months": 1,
+          "target_date": "2026-12-01",
+          "price_rub": 1020000,
+          "interval": {
+            "lower_rub": 900000,
+            "upper_rub": 1140000,
+            "nominal_coverage": 0.8
+          },
+          "backtest": {
+            "origins": 12,
+            "wape": 0.1,
+            "baseline_wape": 0.12,
+            "decision": "publish"
+          }
+        }
+      ],
+      "scenario": null,
+      "refusal_reason": null
+    },
+    {
+      "group_id": "demo-scenario",
+      "mode": "scenario",
+      "source_ids": [
+        "synthetic"
+      ],
+      "data_as_of": "2026-11-01",
+      "n_unique": 60,
+      "quality_flags": [
+        "synthetic"
+      ],
+      "history": [
+        {
+          "date": "2026-10-01",
+          "price_rub": 1000000,
+          "n_unique": 60
+        },
+        {
+          "date": "2026-11-01",
+          "price_rub": 1010000,
+          "n_unique": 60
+        }
+      ],
+      "estimate": null,
+      "forecast": [],
+      "scenario": {
+        "label": "Учебный сценарий: изменение на 2%; не проверенный прогноз",
+        "assumptions": [
+          "Вымышленное изменение +2% для демонстрации UI"
+        ],
+        "points": [
+          {
+            "date": "2026-12-01",
+            "price_rub": 1030200,
+            "n_unique": 0
+          }
+        ]
+      },
+      "refusal_reason": null
+    },
+    {
+      "group_id": "demo-insufficient_data",
+      "mode": "insufficient_data",
+      "source_ids": [
+        "synthetic"
+      ],
+      "data_as_of": null,
+      "n_unique": 0,
+      "quality_flags": [
+        "synthetic"
+      ],
+      "history": [],
+      "estimate": null,
+      "forecast": [],
+      "scenario": null,
+      "refusal_reason": "Учебный отказ: подтвержденных наблюдений нет."
+    }
+  ]
+}

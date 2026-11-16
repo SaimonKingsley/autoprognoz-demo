@@ -1,0 +1,24 @@
+{
+  "services": [
+    {
+      "type": "web",
+      "name": "autoprognoz-demo-mirror",
+      "runtime": "static",
+      "buildCommand": "python3 -E check_demo.py public",
+      "staticPublishPath": "./public",
+      "autoDeployTrigger": "off",
+      "headers": [
+        {
+          "path": "/*",
+          "name": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        },
+        {
+          "path": "/*",
+          "name": "X-Content-Type-Options",
+          "value": "nosniff"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "schema_version": "0.1.0",
+  "run_id": "fixture-v001",
+  "is_fixture": true,
+  "models": [
+    {
+      "make": "DEMO",
+      "model": "Учебная модель — не рыночные данные",
+      "shard_path": "data/fixture-v001/demo/model.json",
+      "supported_modes": [
+        "history",
+        "estimate",
+        "forecast",
+        "scenario",
+        "insufficient_data"
+      ],
+      "groups": [
+        {
+          "id": "demo-history",
+          "characteristics": {
+            "generation": "Учебное поколение",
+            "year": 2018,
+            "mileage_km": 100000,
+            "engine": "Учебный двигатель",
+            "gearbox": "Учебная КПП",
+            "drive": "Учебный привод",
+            "region": "Учебный регион"
+          }
+        },
+        {
+          "id": "demo-estimate",
+          "characteristics": {
+            "generation": "Учебное поколение",
+            "year": 2019,
+            "mileage_km": 100000,
+            "engine": "Учебный двигатель",
+            "gearbox": "Учебная КПП",
+            "drive": "Учебный привод",
+            "region": "Учебный регион"
+          }
+        },
+        {
+          "id": "demo-forecast",
+          "characteristics": {
+            "generation": "Учебное поколение",
+            "year": 2020,
+            "mileage_km": 100000,
+            "engine": "Учебный двигатель",
+            "gearbox": "Учебная КПП",
+            "drive": "Учебный привод",
+            "region": "Учебный регион"
+          }
+        },
+        {
+          "id": "demo-scenario",
+          "characteristics": {
+            "generation": "Учебное поколение",
+            "year": 2021,
+            "mileage_km": 100000,
+            "engine": "Учебный двигатель",
+            "gearbox": "Учебная КПП",
+            "drive": "Учебный привод",
+            "region": "Учебный регион"
+          }
+        },
+        {
+          "id": "demo-insufficient_data",
+          "characteristics": {
+            "generation": "Учебное поколение",
+            "year": 2022,
+            "mileage_km": 100000,
+            "engine": "Учебный двигатель",
+            "gearbox": "Учебная КПП",
+            "drive": "Учебный привод",
+            "region": "Учебный регион"
+          }
+        }
+      ]
+    }
+  ]
+}

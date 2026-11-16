@@ -1,0 +1,35 @@
+{
+  "schema_version": "0.1.0",
+  "run_id": "fixture-v001",
+  "is_fixture": true,
+  "generated_at": "2026-11-14T18:00:00Z",
+  "data_as_of": "2026-11-01",
+  "model_version": null,
+  "status": "fixture",
+  "currency": "RUB",
+  "price_kind": "asking",
+  "sources": [
+    {
+      "id": "synthetic",
+      "label": "Учебные вымышленные данные, не результат модели",
+      "url": "urn:autoprognoz:synthetic",
+      "rights_status": "synthetic"
+    }
+  ],
+  "files": [
+    {
+      "path": "catalog.json",
+      "kind": "catalog",
+      "sha256": "de1456122213797e60d4a0de37c17bd1ed38f34785542671a142e027db1b9596",
+      "bytes": 2608,
+      "gzip_bytes": 504
+    },
+    {
+      "path": "data/fixture-v001/demo/model.json",
+      "kind": "shard",
+      "sha256": "5cff6ac86f8e1678ea4e03065a12add28d6d2994a59fe049bc1ce119d2142436",
+      "bytes": 3964,
+      "gzip_bytes": 825
+    }
+  ]
+}

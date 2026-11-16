@@ -1,0 +1,62 @@
+{
+  "release_id": "demo-f15dd357e2e5",
+  "source_commit": "f15dd357e2e5dc68825134d3a1503de6c860dd4f",
+  "synthetic_only": true,
+  "published_assets": 8,
+  "files": {
+    "public/index.html": {
+      "bytes": 15454,
+      "sha256": "e32e53752daf74d687bb2489d35c47943b286420ca857567a207719111886684"
+    },
+    "public/styles.css": {
+      "bytes": 11224,
+      "sha256": "5aa501ae7e75ebe39491c5a2eca1f9a750b9be0dad0186416409acde69382b16"
+    },
+    "public/app.mjs": {
+      "bytes": 13949,
+      "sha256": "ac1aeff3a91eb7fb06d93442fcb6872036204b9018e778fbe3edde24be154e81"
+    },
+    "public/domain.mjs": {
+      "bytes": 5951,
+      "sha256": "8e82f3ee884749d08c1808ca18f38edd35e66d05dfd516e16a6d3a103e97cbac"
+    },
+    "public/snapshot.mjs": {
+      "bytes": 10743,
+      "sha256": "8af506c54ba1fb067e9991211303b652577cc816cc113dcb20c76c1e4ef19a28"
+    },
+    "public/data/fixture-v001/manifest.json": {
+      "bytes": 920,
+      "sha256": "bf605d158525c8b0bcedc8b65425578b3419b26e51d452a4b1d43e177003c7a3"
+    },
+    "public/data/fixture-v001/catalog.json": {
+      "bytes": 2608,
+      "sha256": "de1456122213797e60d4a0de37c17bd1ed38f34785542671a142e027db1b9596"
+    },
+    "public/data/fixture-v001/data/fixture-v001/demo/model.json": {
+      "bytes": 3964,
+      "sha256": "5cff6ac86f8e1678ea4e03065a12add28d6d2994a59fe049bc1ce119d2142436"
+    },
+    "public/release.json": {
+      "bytes": 1511,
+      "sha256": "92f73a5650ecf97f7e9989dcb7e6f0e5106ac5b22ef87d091d743a1090d2ad65"
+    },
+    "public/.nojekyll": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "check_demo.py": {
+      "bytes": 4113,
+      "sha256": "68e27dcde7c41af4addb5629b2392285d6b76e7443efe27f8c42c5278e08767c"
+    },
+    "render.yaml": {
+      "bytes": 535,
+      "sha256": "414f77d9e3880a876cf29b2122262ed3d4bc99d4a8e4844e21025dad18a7cdeb"
+    },
+    "README.md": {
+      "bytes": 822,
+      "sha256": "8eaefd010d8e2355208847562ee7a7cd5bedf0b4aad8d03d14e50c5cdd6a7144"
+    }
+  },
+  "deployed": false,
+  "account_budget_verified": false
+}
